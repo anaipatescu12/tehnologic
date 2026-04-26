@@ -1,31 +1,372 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La mia prima pagina</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f2f5;
-        }
-        h1 {
-            color: #333;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materii de Specialitate — Liceul Teoretic „Ana Ipătescu" Gherla</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --primary: #b56d2a;
+  --primary-light: #fdf6e9;
+  --primary-mid: #c9883a;
+  --secondary: #2a6b5c;
+  --secondary-light: #e8f5f0;
+  --accent: #5c2a6b;
+  --accent-light: #f3eef9;
+  --gold: #2a5c6b;
+  --gold-light: #e8f2f5;
+  --dark: #1a1510;
+  --text: #251a15;
+  --muted: #7a6a5a;
+  --border: #e8dcd0;
+  --bg: #fdfaf6;
+  --white: #ffffff;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-family:var(--serif);font-size:1.2rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:10px}
+.nav-logo .logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--primary),var(--primary-mid));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;color:white}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:0.875rem;color:var(--muted);text-decoration:none;font-weight:500;transition:color 0.2s;letter-spacing:0.02em}
+.nav-links a:hover{color:var(--text)}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:64px;overflow:hidden}
+.hero-left{padding:80px 60px 80px 80px;display:flex;flex-direction:column;justify-content:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
+.hero-eyebrow::before{content:'';display:block;width:24px;height:2px;background:var(--primary-mid)}
+.hero h1{font-family:var(--serif);font-size:clamp(3rem,5vw,5rem);line-height:1.08;color:var(--dark);margin-bottom:24px}
+.hero h1 em{font-style:italic;color:var(--primary-mid)}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:440px;margin-bottom:48px;line-height:1.7}
+.hero-cta{display:flex;gap:16px;align-items:center}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--dark);color:white;padding:14px 28px;border-radius:50px;font-size:0.9rem;font-weight:500;text-decoration:none;transition:all 0.25s}
+.btn-primary:hover{background:var(--primary);transform:translateY(-1px);box-shadow:0 8px 24px rgba(181,109,42,0.3)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:0.9rem;font-weight:500;text-decoration:none;transition:color 0.2s}
+.btn-ghost:hover{color:var(--text)}
+.hero-right{position:relative;background:var(--dark);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-visual{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:2px;width:100%;height:100%}
+.hero-panel{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;gap:12px}
+.hero-panel.economic{background:rgba(181,109,42,0.14)}
+.hero-panel.gastrono{background:rgba(107,92,42,0.14)}
+.hero-panel.economice{background:rgba(42,107,92,0.14)}
+.hero-panel.mecanic{background:rgba(92,42,107,0.14)}
+.hero-panel.designer{background:rgba(42,92,107,0.14)}
+.hero-panel.textile{background:rgba(92,107,42,0.14)}
+.hero-panel-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.economic .hero-panel-icon{background:rgba(181,109,42,0.22);color:var(--primary)}
+.gastrono .hero-panel-icon{background:rgba(107,92,42,0.22);color:var(--primary-mid)}
+.economice .hero-panel-icon{background:rgba(42,107,92,0.22);color:var(--secondary)}
+.mecanic .hero-panel-icon{background:rgba(92,42,107,0.22);color:var(--accent)}
+.designer .hero-panel-icon{background:rgba(42,92,107,0.22);color:var(--gold)}
+.textile .hero-panel-icon{background:rgba(92,107,42,0.22);color:#6b5a2a}
+.hero-panel h3{font-family:var(--serif);font-size:1.1rem;color:white;text-align:center}
+.hero-panel p{font-size:0.75rem;color:rgba(255,255,255,0.5);text-align:center;line-height:1.4}
+
+.container{max-width:1140px;margin:0 auto;padding:0 40px}
+section{padding:96px 0}
+.section-tag{display:inline-flex;align-items:center;gap:8px;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.section-tag.primary{color:var(--primary-mid)}
+.section-tag.secondary{color:var(--secondary)}
+.section-tag.accent{color:var(--accent)}
+.section-tag.gold{color:var(--gold)}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);line-height:1.15;color:var(--dark);margin-bottom:16px}
+.section-desc{font-size:1.05rem;color:var(--muted);max-width:560px;line-height:1.75;margin-bottom:56px}
+
+.stats-bar{background:var(--dark)}
+.stats-inner{display:grid;grid-template-columns:repeat(6,1fr)}
+.stat-item{padding:40px 20px;border-right:1px solid rgba(255,255,255,0.08);text-align:center}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:var(--serif);font-size:2rem;color:white;display:block;line-height:1;margin-bottom:8px}
+.stat-label{font-size:0.7rem;color:rgba(255,255,255,0.4);font-weight:500;letter-spacing:0.06em;text-transform:uppercase}
+
+.specializations-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.spec-card{background:var(--white);border-radius:var(--radius);padding:32px 24px;text-align:center;transition:all 0.3s;border:1px solid var(--border)}
+.spec-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.08)}
+.spec-icon{width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 20px}
+.spec-card.economic .spec-icon{background:var(--primary-light);color:var(--primary)}
+.spec-card.gastrono .spec-icon{background:var(--primary-light);color:var(--primary-mid)}
+.spec-card.economice .spec-icon{background:var(--secondary-light);color:var(--secondary)}
+.spec-card.mecanic .spec-icon{background:var(--accent-light);color:var(--accent)}
+.spec-card.designer .spec-icon{background:var(--gold-light);color:var(--gold)}
+.spec-card.textile .spec-icon{background:#f5f0e0;color:#8a7b3a}
+.spec-card h3{font-family:var(--serif);font-size:1.1rem;margin-bottom:10px;color:var(--dark)}
+.spec-card p{font-size:0.85rem;color:var(--muted);line-height:1.6}
+
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 40px rgba(0,0,0,0.06)}
+.why-card{background:var(--white);padding:48px;transition:background 0.3s;cursor:default;position:relative;overflow:hidden}
+.why-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity 0.3s}
+.why-card.c-primary::before{background:var(--primary-light)}
+.why-card.c-secondary::before{background:var(--secondary-light)}
+.why-card.c-accent::before{background:var(--accent-light)}
+.why-card.c-gold::before{background:var(--gold-light)}
+.why-card:hover::before{opacity:1}
+.why-card>*{position:relative;z-index:1}
+.why-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:24px}
+.c-primary .why-icon{background:var(--primary-light);color:var(--primary)}
+.c-secondary .why-icon{background:var(--secondary-light);color:var(--secondary)}
+.c-accent .why-icon{background:var(--accent-light);color:var(--accent)}
+.c-gold .why-icon{background:var(--gold-light);color:var(--gold)}
+.why-card h3{font-family:var(--serif);font-size:1.4rem;margin-bottom:14px;color:var(--dark)}
+.why-card p{font-size:0.95rem;color:var(--muted);line-height:1.75}
+
+.media-section{background:var(--bg)}
+.gallery-label{font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:6px 14px;border-radius:50px;display:inline-block;margin-bottom:20px}
+.gallery-label.primary{background:rgba(181,109,42,0.1);color:var(--primary-mid)}
+.media-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:40px}
+.media-item{background:var(--border);position:relative;overflow:hidden;border-radius:var(--radius-sm);aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.media-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease}
+.media-item:hover img{transform:scale(1.04)}
+
+@media(max-width:1100px){.media-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:700px){.media-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:500px){.media-grid{grid-template-columns:repeat(2,1fr)}}
+
+@media(max-width:900px){
+  nav{padding:0 20px}.nav-links{display:none}
+  .hero{grid-template-columns:1fr}.hero-right{height:500px}.hero-left{padding:60px 24px}
+  .hero-visual{grid-template-columns:repeat(2,1fr)}
+  .container{padding:0 20px}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .stat-item:nth-child(3),.stat-item:nth-child(4),.stat-item:nth-child(5),.stat-item:nth-child(6){border-right:none}
+  .stat-item:nth-child(odd){border-right:1px solid rgba(255,255,255,0.08)}
+  .specializations-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .specializations-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .specializations-grid{grid-template-columns:1fr}
+  .media-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
 </head>
 <body>
 
-    <h1>Hello World!</h1>
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon"><i class="fas fa-tools"></i></div>
+    Structura Tehnologică
+  </a>
+  <ul class="nav-links">
+    <li><a href="#despre">Despre</a></li>
+    <li><a href="#specializari">Specializări</a></li>
+    <li><a href="#activitati">Activități</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+  </ul>
+</nav>
 
+<section class="hero" id="despre">
+  <div class="hero-left">
+    <p class="hero-eyebrow animate-in">Liceul Teoretic „Ana Ipătescu" · Gherla</p>
+    <h1 class="animate-in delay-1">Pregătire <em>tehnică</em> pentru viitor</h1>
+    <p class="hero-sub animate-in delay-2">Oferim competențe practice în 6 domenii tehnice: industrie alimentară, gastronomie, activități economice, mecanică, designer vestimentar, industrie textilă.</p>
+    <div class="hero-cta animate-in delay-3">
+      <a href="#specializari" class="btn-primary"><i class="fas fa-graduation-cap"></i> Specializările noastre</a>
+      <a href="#activitati" class="btn-ghost">Activitățile practice <i class="fas fa-arrow-right" style="font-size:0.8em"></i></a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="hero-panel economic">
+        <div class="hero-panel-icon"><i class="fas fa-utensils"></i></div>
+        <h3>Ind. Alimentară</h3>
+      </div>
+      <div class="hero-panel gastrono">
+        <div class="hero-panel-icon"><i class="fas fa-hat-chef"></i></div>
+        <h3>Gastronomie</h3>
+      </div>
+      <div class="hero-panel economice">
+        <div class="hero-panel-icon"><i class="fas fa-calculator"></i></div>
+        <h3>Activități Ec.</h3>
+      </div>
+      <div class="hero-panel mecanic">
+        <div class="hero-panel-icon"><i class="fas fa-wrench"></i></div>
+        <h3>Mecanic</h3>
+      </div>
+      <div class="hero-panel designer">
+        <div class="hero-panel-icon"><i class="fas fa-tshirt"></i></div>
+        <h3>Designer</h3>
+      </div>
+      <div class="hero-panel textile">
+        <div class="hero-panel-icon"><i class="fas fa-thread"></i></div>
+        <h3>Ind. Textilă</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal"><span class="stat-num">6</span><span class="stat-label">Specializări</span></div>
+    <div class="stat-item reveal"><span class="stat-num"><i class="fas fa-briefcase" style="font-size:1.8rem"></i></span><span class="stat-label">Practica</span></div>
+    <div class="stat-item reveal"><span class="stat-num"><i class="fas fa-users" style="font-size:1.8rem"></i></span><span class="stat-label">Parteneri</span></div>
+    <div class="stat-item reveal"><span class="stat-num"><i class="fas fa-certificate" style="font-size:1.8rem"></i></span><span class="stat-label">Certificări</span></div>
+    <div class="stat-item reveal"><span class="stat-num"><i class="fas fa-tools" style="font-size:1.8rem"></i></span><span class="stat-label">Ateliere</span></div>
+  </div>
+</div>
+
+<section id="specializari">
+  <div class="container">
+    <p class="section-tag primary reveal"><i class="fas fa-graduation-cap"></i> Ofertă educațională</p>
+    <h2 class="section-title reveal">Domeniile de<br>pregătire tehnică</h2>
+    <p class="section-desc reveal">Cinci specializări care pregătesc elevii pentru cariere în sectorul tehnic și economic.</p>
+
+    <div class="specializations-grid reveal">
+      <div class="spec-card economic">
+        <div class="spec-icon"><i class="fas fa-utensils"></i></div>
+        <h3>Tehnician Industrie Alimentară</h3>
+        <p>Producție, control calitate, siguranță alimentară</p>
+      </div>
+      <div class="spec-card gastrono">
+        <div class="spec-icon"><i class="fas fa-utensils"></i></div>
+        <h3>Tehnician în Gastronomie</h3>
+        <p>Bucătărie, preparate culinare, servire</p>
+      </div>
+      <div class="spec-card economice">
+        <div class="spec-icon"><i class="fas fa-calculator"></i></div>
+        <h3>Tehnician Activități Economice</h3>
+        <p>Contabilitate, marketing, management</p>
+      </div>
+      <div class="spec-card mecanic">
+        <div class="spec-icon"><i class="fas fa-wrench"></i></div>
+        <h3>Tehnician Mecanic</h3>
+        <p>Întreținere, reparații, utilaje</p>
+      </div>
+      <div class="spec-card designer">
+        <div class="spec-icon"><i class="fas fa-tshirt"></i></div>
+        <h3>Tehnician Designer Vestimentar</h3>
+        <p>Design, croitorie, tehnologie</p>
+      </div>
+      <div class="spec-card textile">
+        <div class="spec-icon"><i class="fas fa-thread"></i></div>
+        <h3>Tehnician Industrie Textilă</h3>
+        <p>Producție textile, îmbrăcăminte</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="activitati">
+  <div class="container">
+    <p class="section-tag secondary reveal"><i class="fas fa-tools"></i> De ce contează</p>
+    <h2 class="section-title reveal">Pregătire<br>practică aplicată</h2>
+    <p class="section-desc reveal">În cadrul structurii tehnologice, elevii dobândesc competențe practice direct aplicabile în industria tehnică.</p>
+
+    <div class="why-grid reveal">
+      <div class="why-card c-primary">
+        <div class="why-icon"><i class="fas fa-utensils"></i></div>
+        <h3>De ce Tehnician Industrie Alimentară?</h3>
+        <p>Pregătire în producția alimentară, controlul calității și normele de siguranță alimentară.</p>
+      </div>
+      <div class="why-card c-secondary">
+        <div class="why-icon"><i class="fas fa-utensils"></i></div>
+        <h3>De ce Tehnician în Gastronomie?</h3>
+        <p>Tehnici de bucătărie, preparare culinare și servire în industria ospitalității.</p>
+      </div>
+      <div class="why-card c-accent">
+        <div class="why-icon"><i class="fas fa-calculator"></i></div>
+        <h3>De ce Tehnician Activități Economice?</h3>
+        <p>Contabilitate, management și marketing pentru viitori specialiști în afaceri.</p>
+      </div>
+      <div class="why-card c-gold">
+        <div class="why-icon"><i class="fas fa-wrench"></i></div>
+        <h3>De ce Tehnician Mecanic?</h3>
+        <p>Competențe practice în întreținere și reparații de utilaje și echipamente.</p>
+      </div>
+      <div class="why-card c-primary">
+        <div class="why-icon"><i class="fas fa-tshirt"></i></div>
+        <h3>De ce Tehnician Designer Vestimentar?</h3>
+        <p>Crearea și confectionarea îmbrăcămintei, tehnici de croitorie și design modern.</p>
+      </div>
+      <div class="why-card c-secondary">
+        <div class="why-icon"><i class="fas fa-thread"></i></div>
+        <h3>De ce Tehnician Industrie Textilă?</h3>
+        <p>Producție textilă, tehnologii de fabricare și prelucrare a materialelor.</p>
+      </div>
+      <div class="why-card c-accent">
+        <div class="why-icon"><i class="fas fa-handshake"></i></div>
+        <h3>Activități practice</h3>
+        <p>Stagii de practică la firme partnere, proiecte aplicate și certificări profesionale.</p>
+      </div>
+      <div class="why-card c-gold">
+        <div class="why-icon"><i class="fas fa-certificate"></i></div>
+        <h3>Certificări</h3>
+        <p>Certificări profesionale recunoscute care facilitează angajarea.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="media-section" id="galerie">
+  <div class="container">
+    <p class="section-tag primary reveal"><i class="fas fa-images"></i> Galerie</p>
+    <h2 class="section-title reveal">Activități și<br>pregătire practică</h2>
+    <p class="section-desc reveal">Imagini din atelierele și practicile structurii tehnologice.</p>
+
+    <p class="gallery-label primary reveal"><i class="fas fa-camera"></i> Galerie Foto</p>
+    <div class="media-grid reveal">
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/100babf5-c176-42ea-840e-6da065e35f3e.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/13059e95-ac9e-4344-b42d-80f5da7d51a4.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/1a68a3a3-e022-4032-b62a-25a8b8129f85.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/1d0e93be-9d3b-46e0-b402-85d214ff33e8.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/25bd281e-4bad-440c-9b15-da90f1d13f36.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/2738518c-4406-4ac0-96a3-4e8aced2f307.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/2916a796-4fb9-42f9-bd4e-6cd1ae4d08de.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/440fd88d-1a91-481d-9a3d-abf16e5dc155.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/466a9ddf-c849-4dcd-97c1-7699b0b068b7.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/5e2cd726-7329-429c-be24-80c1c84116e5.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/62863a2b-627b-4785-bc47-8aa0920074ed.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/666b54a5-9c36-4144-9849-f635db35db36.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/66a1d9f0-8bfc-458a-bcd6-ca24fff71277.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/6a6a42db-77bb-40b1-91c4-ad8c16917aea.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/6abb6bb7-df82-4c60-86ee-19a932779037.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/992e9be1-fc6c-4ca5-a91e-a31eb88ecc0f.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/9bdce0d5-c338-43c6-b6ae-516c43671ea9.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/9ec2ac8b-4ec0-490a-aeba-85f5d280560d.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/a6e82f32-a59b-4768-a082-250a5c1c2208.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/c3eb7a3a-6276-409d-9c48-2e8eb5255e20.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/d303e6d3-d12a-4387-a641-dc4caf586362.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/d8e20284-a165-4bca-ab59-92e9fc4e8b03.jpg" alt="Activitate practică"></div>
+      <div class="media-item"><img src="https://raw.githubusercontent.com/anaipatescu12/tehnologic/main/e8a8f5b7-f542-44d6-bed7-0a3e541e6d7e.jpg" alt="Activitate practică"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-logo">Structura Tehnologică</div>
+    <p><strong>Liceul Teoretic „Ana Ipătescu"</strong> · Gherla, Cluj</p>
+    <p style="margin-top:8px">© 2026 · Toate drepturile rezervate</p>
+  </div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const siblings = Array.from(e.target.parentElement?.children||[]).filter(c=>c.classList.contains('reveal'));
+      const idx = siblings.indexOf(e.target);
+      e.target.style.transitionDelay = (idx*80)+'ms';
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(el=>observer.observe(el));
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').style.boxShadow = window.scrollY>20?'0 1px 20px rgba(0,0,0,0.08)':'none';
+},{passive:true});
+</script>
 </body>
 </html>
